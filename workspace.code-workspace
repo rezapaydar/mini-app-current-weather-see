@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "..\\New folder\\apitest"
+		},
+		{
+			"path": "..\\..\\Downloads\\ngx-mapbox-gl"
+		},
+		{
+			"path": "..\\..\\Downloads\\ngx-leaflet-master"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "map test"
+	}
+}

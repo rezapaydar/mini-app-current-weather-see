@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<style>
+    #mapid {
+        height: 250px;
+    }
+</style>
+
+<body onload="showalert()">
+
+    <div id="mapid"></div>
+
+    <div class="wrapper d-flex flex-column flex-lg-row p-3">
+
+        <div class="login-box mr-lg-4 col-12 col-lg-6">
+            <p class="text-white text-center">جست و جو برای یافتن آب و هوای منطقه مورد نظر براساس طول و عرض جغرافیایی</p
+                class="text-white text center">
+            <form>
+                <div class="user-box">
+                    <input type="text" id="lat" name="" required="">
+                    <label>طول جغرافیایی</label>
+                </div>
+                <div class="user-box">
+                    <input type="text" id="lon" name="" required="">
+                    <label>عرض جغرافیایی</label>
+                </div>
+                <a href="#" onclick="request()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    جست و جو
+                </a>
+            </form>
+        </div>
+
+        <table class="table table-rtl table-dark table-hover mt-4 mt-lg-0 table-striped col-12 col-lg-6">
+            <tr class="rtl" id="placename">
+                
+            </tr>
+            <tr id="demo">
+                
+            </tr>
+            <tr id="prop">
+
+            </tr>
+        </table>
+
+    </div>
+
+</body>
+<script>
+
+    let mymap = L.map('mapid').setView([34.79970851207568, 48.541717529296875], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFtYXJlemFqIiwiYSI6ImNramc0NmZiZjh2N3oycWxieGthZDl2NHcifQ.J1EPYpePdEsfJ05yjQn0Kg', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoibWFtYXJlemFqIiwiYSI6ImNramc0NmZiZjh2N3oycWxieGthZDl2NHcifQ.J1EPYpePdEsfJ05yjQn0Kg'
+    }).addTo(mymap);
+    mymap.on('click', (e) => {
+
+        document.getElementById('lat').value = e.latlng.lat;
+        document.getElementById('lon').value = e.latlng.lng;
+
+    })
+
+
+</script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+
+
+
+    swal({
+        title: "خوش آمدید!",
+        text: `پروژه مباحث ویزه برنامه نویسی : محمدرضا جابری 
+        با کلیک روی نقشه مختصات آن را بدست آورید  و سپس با زدن کلید جست و جو آب و هوای منطقه را محاسبه کنید
+        `,
+        icon: "success",
+        button: "فهمیدم",
+      });
+
+
+</script>
+<script src="showalert.js"></script>
+<script src="script.js"></script>
+
+</html>
